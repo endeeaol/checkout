@@ -23,6 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='step'}
+	{*
   <section class="checkout-step -unreachable" id="{$identifier}">
     <div class="card-header checkout-step__header" id="heading-{$identifier}" data-identifier="{$identifier}">
       <p class="step-title h5 mb-0 js-step-title">
@@ -31,4 +32,5 @@
       </p>
     </div>
   </section>
+  *}
 {/block}

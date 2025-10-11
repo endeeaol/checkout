@@ -30,7 +30,7 @@
 
 	  
 {* Ukrywam podsumowanie w logowaniu *}
-  <section id="content">
+  <section id="content" class="checkoutcontent">
     <div class="row">
       <div class="cart-grid-body {if $current_step_identifier == 'checkout-personal-information-step'} col-12 col-lg-8 mb-4 m-auto {else} order-2 order-lg-1 col-12 col-lg-8 mb-4{/if}">
         <div class="card">
