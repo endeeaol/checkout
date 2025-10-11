@@ -1,21 +1,16 @@
 {extends file=$layout}
-
-{block name='header'}
-  {include file='checkout/_partials/header.tpl'}
-{/block}
+{block name='header'}{include file='checkout/_partials/header.tpl'}{/block}
 
 {block name='content'}
-
-  {* Zmienna {$current_step_identifier} jest dostarczana przez nasz moduł *}
-
-  {* Nawigacja jest teraz wyświetlana ZAWSZE (ukryjemy ją za pomocą CSS w kroku 1) *}
   {assign var='static_steps' value=[
     ['identifier' => 'checkout-personal-information-step', 'position' => 1, 'title' => {l s='Personal Information' d='Shop.Theme.Checkout'}],
     ['identifier' => 'checkout-addresses-step', 'position' => 2, 'title' => {l s='Addresses' d='Shop.Theme.Checkout'}],
     ['identifier' => 'checkout-delivery-step', 'position' => 3, 'title' => {l s='Shipping Method' d='Shop.Theme.Checkout'}],
     ['identifier' => 'checkout-payment-step', 'position' => 4, 'title' => {l s='Payment' d='Shop.Theme.Checkout'}]
   ]}
-  <div class="steps-navigation-container container mb-4">
+  
+  
+<aside class="steps-navigation-container container mb-4 {if $current_step_identifier == 'checkout-personal-information-step'} d-none{/if}">
     <div class="row">
       {assign var='is_current_step_passed' value=false}
       {foreach from=$static_steps item=step}
@@ -28,19 +23,20 @@
         {if $is_current}{assign var='is_current_step_passed' value=true}{/if}
       {/foreach}
     </div>
-  </div>
+</aside>
 
-  {* Układ dwukolumnowy jest teraz wyświetlany ZAWSZE (zmodyfikujemy go za pomocą CSS w kroku 1) *}
+	  
+{* Ukrywam podsumowanie w logowaniu *}
   <section id="content">
     <div class="row">
-      <div class="cart-grid-body col-12 col-lg-8 mb-4">
+      <div class="cart-grid-body {if $current_step_identifier == 'checkout-personal-information-step'} col-12 col-lg-8 mb-4 m-auto {else} order-2 order-lg-1 col-12 col-lg-8 mb-4{/if}">
         <div class="card">
           {block name='checkout_process'}
             {render file='checkout/checkout-process.tpl' ui=$checkout_process}
           {/block}
         </div>
       </div>
-      <div class="cart-grid-right col-12 col-lg-4">
+      <div class="cart-grid-right {if $current_step_identifier == 'checkout-personal-information-step'}d-none{else}order-1 order-lg-2 col-12 col-lg-4{/if}">
         {block name='cart_summary'}
           {include file='checkout/_partials/cart-summary.tpl' cart=$cart}
         {/block}
