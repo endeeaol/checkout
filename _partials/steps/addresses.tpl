@@ -47,6 +47,18 @@
 
       {if $show_delivery_address_form}
         <div id="delivery-address">
+			
+			<div class="form-group">
+				<div class="custom-control custom-checkbox">
+				  <input type="checkbox" class="custom-control-input" id="js-is-company-checkbox">
+				  <label class="custom-control-label" for="js-is-company-checkbox">
+					{l s='I am buying as a company' d='Shop.Theme.Checkout'}
+				  </label>
+				</div>
+			  </div>
+			  <hr/>
+			
+			
           {render file                      = 'checkout/_partials/address-form.tpl'
             ui                        = $address_form
             use_same_address          = $use_same_address
