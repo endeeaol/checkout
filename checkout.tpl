@@ -50,6 +50,10 @@
 
 {/block}
 
+
+
 {block name='footer'}
-  {include file='checkout/_partials/footer.tpl'}
+	<aside class="checkoutcontent">
+	{include file='checkout/_partials/footer.tpl'}
+	</aside>
 {/block}

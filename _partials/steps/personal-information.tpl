@@ -9,9 +9,9 @@
             <li class="{if $show_login_form}uk-active{/if}">
                 <a href="#">
                     {if $guest_allowed}
-                        {l s='Order as a guest' d='Shop.Theme.Checkout'}
+                        {l s='Orderit as a guest' d='Shop.Theme.Global'}
                     {else}
-                        {l s='Create an account' d='Shop.Theme.Customeraccount'}
+                        {l s='Orderit as a guest' d='Shop.Theme.Global'}
                     {/if}
                 </a>
             </li>
@@ -33,16 +33,16 @@
     <div class="col-md-5">
         <div class="card bggray100 corner8 p-2">
             <div class="card-body text-center">
-                <h5 class="h5 strong text-left">{l s='Benefits of creating an account' d='Shop.Theme.Checkout'}</h5>
+                <h5 class="h5 strong text-left">{l s='Benefits of creating an account' d='Shop.Theme.Global'}</h5>
                 <ul class="list-unstyled mt-3 text-left">
                     <li class="mb-3 ui"><span class="colorgreen pe-1" uk-icon="icon: clock"></span> {l s='Even faster shopping' d='Shop.Theme.Global'}</li>
                     <li class="mb-3 ui"><span class="colorgreen pe-1" uk-icon="icon: list"></span>  {l s='History and tracking of orders' d='Shop.Theme.Global'}</li>
                     <li class="mb-3 ui"><span class="colorgreen pe-1" uk-icon="icon: tag"></span>  {l s='Special discounts and promotions' d='Shop.Theme.Global'}</li>
-					<li class="mb-3 ui"><span class="colorgreen pe-1" uk-icon="icon: mail"></span>  {l s='Newsletter bogaty w wiedzę' d='Shop.Theme.Global'}</li>
+					<li class="mb-3 ui"><span class="colorgreen pe-1" uk-icon="icon: mail"></span>  {l s='Newsletter bogaty w wiedze' d='Shop.Theme.Global'}</li>
                 </ul>
                 <hr>
                 <a href="{$urls.pages.registration}" class="btn btn-secondary outline btn-block mt-3">
-                    {l s='Create an account' d='Shop.Theme.Actions'}
+                    {l s='Create an account' d='Shop.Theme.Global'}
                 </a>
             </div>
         </div>
