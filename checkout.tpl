@@ -28,6 +28,7 @@
     </div>
 </aside>
 
+ 
 	  
 {* Ukrywam podsumowanie w logowaniu *}
   <section id="content" class="checkoutcontent">
