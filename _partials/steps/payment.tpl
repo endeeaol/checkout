@@ -1,8 +1,7 @@
 {extends file='checkout/_partials/steps/checkout-step.tpl'}
 
 {block name='step_content'}
-
-  {hook h='displayPaymentTop'}
+ 
 
   {* used by javascript to correctly handle cart updates when we are on payment step (eg vouchers added) *}
   <div style="display:none" class="js-cart-payment-step-refresh"></div>
@@ -78,6 +77,9 @@
       <p class="alert alert-danger">{l s='Unfortunately, there are no payment method available.' d='Shop.Theme.Checkout'}</p>
     {/foreach}
   </div>
+  
+  {* Komentarz zamowienia z modułu bestcheckout *}
+  {hook h='displayPaymentTop'}
 
   {if $conditions_to_approve|count}
     <p style="display:none;" class="ps-hidden-by-js">
