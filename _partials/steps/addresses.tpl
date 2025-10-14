@@ -26,48 +26,41 @@
 
 {block name='step_content'}
   <div class="js-address-form">
-    <form
-      method="POST"
-      data-id-address="{$id_address}"
-      action="{url entity='order' params=['id_address' => $id_address]}"
-      data-refresh-url="{url entity='order' params=['ajax' => 1, 'action' => 'addressForm']}"
-    >
+    <form method="POST" data-id-address="{$id_address}" action="{url entity='order' params=['id_address' => $id_address]}" data-refresh-url="{url entity='order' params=['ajax' => 1, 'action' => 'addressForm']}" >
 
       {if $use_same_address}
-        <p class="mb-4">
+        <p class="mb-4 strong">
           {if $cart.is_virtual}
-            {l s='The selected address will be used as your personal address (for invoice).' d='Shop.Theme.Checkout'}
+            {l s='Address delivery and invoice.' d='Shop.Theme.Global'}
           {else}
             {l s='The selected address will be used both as your personal address (for invoice) and as your delivery address.' d='Shop.Theme.Checkout'}
           {/if}
         </p>
       {else}
-        <h2 class="h4">{l s='Shipping Address' d='Shop.Theme.Checkout'}</h2>
+        <p class="strong">{l s='Shipping Address' d='Shop.Theme.Checkout'}</p>
       {/if}
 
       {if $show_delivery_address_form}
         <div id="delivery-address">
-			
 			<div class="form-group">
 				<div class="custom-control custom-checkbox">
 				  <input type="checkbox" class="custom-control-input" id="js-is-company-checkbox">
 				  <label class="custom-control-label" for="js-is-company-checkbox">
-					{l s='I am buying as a company' d='Shop.Theme.Checkout'}
+					{l s='I am buying as a company' d='Shop.Theme.Global'}
 				  </label>
 				</div>
-			  </div>
-			  <hr/>
-			
-			
-          {render file                      = 'checkout/_partials/address-form.tpl'
-            ui                        = $address_form
-            use_same_address          = $use_same_address
-            type                      = "delivery"
-            form_has_continue_button  = $form_has_continue_button
-          }
+			</div>
+			{render file = 'checkout/_partials/address-form.tpl'
+			  ui = $address_form
+			  use_same_address = $use_same_address
+			  type = "delivery"
+			  form_has_continue_button  = $form_has_continue_button
+			}
         </div>
+		
       {elseif $customer.addresses|count > 0}
-        <div id="delivery-addresses" class="address-selector js-address-selector row">
+		  
+        <div id="delivery-addresses" class="address-selector js-address-selector row g-4">
           {include  file        = 'checkout/_partials/address-selector-block.tpl'
             addresses   = $customer.addresses
             name        = "id_address_delivery"
@@ -83,8 +76,8 @@
           <p class="alert alert-danger js-address-error" name="alert-delivery" style="display: none">{l s="Your address is incomplete, please update it." d="Shop.Notifications.Error"}</p>
         {/if}
 
-        <div class="add-address mt-2 mb-3">
-          <a class="btn btn-outline-primary btn-sm" href="{$new_address_delivery_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
+        <div class="add-address mt-0 mb-3">
+          <a class="btn btn-secondary outline btn-sm" href="{$new_address_delivery_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
         </div>
 
         {if $use_same_address && !$cart.is_virtual}
@@ -99,7 +92,7 @@
 
       {if !$use_same_address}
 
-        <h2 class="h4">{l s='Your Invoice Address' d='Shop.Theme.Checkout'}</h2>
+        <p class="strong">{l s='Your Invoice Address' d='Shop.Theme.Checkout'}</p>
 
         {if $show_invoice_address_form}
           <div id="invoice-address">
@@ -127,20 +120,20 @@
             <p class="alert alert-danger js-address-error" name="alert-invoice" style="display: none">{l s="Your address is incomplete, please update it." d="Shop.Notifications.Error"}</p>
           {/if}
 
-          <div class="add-address mt-2 mb-3">
-            <a class="btn btn-outline-primary btn-sm" href="{$new_address_invoice_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
+          <div class="add-address mt-3 mb-3">
+            <a class="btn btn-secondary outline btn-sm" href="{$new_address_invoice_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
           </div>
         {/if}
 
       {/if}
 
       {if !$form_has_continue_button}
-        <div class="text-right">
+        <div class="text-center">
           <button type="submit" class="btn btn-primary continue d-none d-md-inline-block" name="confirm-addresses" value="1">
-            {l s='Continue' d='Shop.Theme.Actions'}
+            {l s='Continue - delivery method' d='Shop.Theme.Global'}
           </button>
           <button type="submit" class="btn btn-primary continue btn-block d-block d-md-none" name="confirm-addresses" value="1">
-            {l s='Continue' d='Shop.Theme.Actions'}
+            {l s='Continue - delivery method' d='Shop.Theme.Global'}
           </button>
           <input type="hidden" id="not-valid-addresses" class="js-not-valid-addresses" value="{$not_valid_addresses}">
         </div>

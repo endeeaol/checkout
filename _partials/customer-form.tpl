@@ -21,23 +21,11 @@
 {/block}
 
 {block "form_buttons"}
-  <div class="text-right">
-    <button
-      class="continue btn btn-primary d-none d-md-inline-block"
-      name="continue"
-      data-link-action="register-new-customer"
-      type="submit"
-      value="1"
-    >
-        {l s='Continue' d='Shop.Theme.Actions'}
+  <div class="text-center">
+    <button class="continue btn btn-primary d-none d-md-inline-block" name="continue" data-link-action="register-new-customer" type="submit" value="1">
+        {l s='Continue - delivery address' d='Shop.Theme.Global'}
     </button>
-    <button
-      class="continue btn btn-primary btn-block d-block d-md-none"
-      name="continue"
-      data-link-action="register-new-customer"
-      type="submit"
-      value="1"
-    >
+    <button class="continue btn btn-primary btn-block d-block d-md-none" name="continue" data-link-action="register-new-customer" type="submit" value="1">
         {l s='Continue' d='Shop.Theme.Actions'}
     </button>
   </div>
