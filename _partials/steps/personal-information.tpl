@@ -32,7 +32,7 @@
 
     {* === PRAWA KOLUMNA: KORZYŚCI I PRZYCISK REJESTRACJI (BEZ ZMIAN) === *}
     <div class="col-md-5">
-        <div class="card bggray100 corner8 p-2">
+        <div class="card bggray100 corner8 p-2 mt-lg-3">
             <div class="card-body text-center">
                 <h5 class="h5 strong text-left">{l s='Benefits of creating an account' d='Shop.Theme.Global'}</h5>
                 <ul class="list-unstyled mt-3 text-left">

@@ -9,48 +9,57 @@
  
 {* Zmienna {$current_step_identifier} jest dostarczana przez moduł bestcheckout*}
 {* Nawigacja kroków (ukryta na pierwszym kroku) *}
-  {if $current_step_identifier != 'checkout-personal-information-step'}
-    {assign var='static_steps' value=[
-      ['identifier' => 'checkout-personal-information-step', 'position' => 1, 'title' => {l s='Personal Information' d='Shop.Theme.Checkout'}],
-      ['identifier' => 'checkout-addresses-step', 'position' => 2, 'title' => {l s='Addresses' d='Shop.Theme.Checkout'}],
-      ['identifier' => 'checkout-delivery-step', 'position' => 3, 'title' => {l s='Shipping Method' d='Shop.Theme.Checkout'}],
-      ['identifier' => 'checkout-payment-step', 'position' => 4, 'title' => {l s='Payment' d='Shop.Theme.Checkout'}]
-    ]}
-    <div class="steps-navigation-container container mb-4">
-      <div class="row">
-        {assign var='is_current_step_passed' value=false}
-{foreach from=$static_steps item=step}
-    {if $step.identifier != 'checkout-personal-information-step'}
+{if $current_step_identifier != 'checkout-personal-information-step'}
+
+  {* ZMIANA: Uproszczone nazwy i usunięty Krok 1 z listy, tak jak chcieliśmy *}
+  {assign var='static_steps' value=[
+	['identifier' => 'checkout-personal-information-step', 'position' => 1, 'title' => {l s='CheckoutNav Personal data' d='Shop.Theme.Global'}],
+    ['identifier' => 'checkout-addresses-step', 'position' => 2, 'title' => {l s='CheckoutNav Address' d='Shop.Theme.Global'}],
+    ['identifier' => 'checkout-delivery-step', 'position' => 3, 'title' => {l s='CheckoutNav Shipping' d='Shop.Theme.Global'}],
+    ['identifier' => 'checkout-payment-step', 'position' => 4, 'title' => {l s='CheckoutNav Payment' d='Shop.Theme.Global'}]
+  ]}
+
+  <div class="steps-navigation-container container mb-4">
+    <div class="row">
+      {assign var='is_current_step_passed' value=false}
+      {foreach from=$static_steps item=step}
+
         {assign var='is_current' value=($step.identifier == $current_step_identifier)}
-        {assign var='is_reachable' value=(!$is_current_step_passed || $is_current)}
-        <div class="col" id="nav-{$step.identifier}">
-            {if $is_reachable}
-                {* Dodajemy atrybut data-target z ID sekcji, którą ma kontrolować ten link *}
-                <a href="#" class="checkout-nav-link" data-target="#{$step.identifier}">
-            {/if}
-            <div class="step-item {if $is_current}--current{elseif !$is_current_step_passed}--complete{/if}">
-                <h5 class="step-title mb-0"><span class="step-number">{$step.position}.</span> {$step.title}</h5>
-            </div>
-            {if $is_reachable}
-                </a>
-            {/if}
+        {assign var='is_complete' value=(!$is_current_step_passed && !$is_current)}
+
+        {* ZMIANA: Dodajemy klasy statusu (--current, --complete, --upcoming) do głównego kontenera 'col' *}
+        <div class="col step-nav-col {if $is_current}--current{elseif $is_complete}--complete{else}--upcoming{/if}" id="nav-{$step.identifier}">
+          
+          
+          {if $is_complete}
+            <a href="#" class="checkout-nav-link" data-target="#{$step.identifier}">
+          {/if}
+          
+          <div class="step-item">
+            <h5 class="step-title mb-0">
+              <span class="step-number">{$step.position}.</span>
+              <span class="step-title-text">{$step.title}</span>
+              {* ZMIANA: Dodajemy ikonę ✓ i link "(zmień)" dla ukończonych kroków *}
+              {if $is_complete}
+                <i class="material-icons step-check-icon">check_circle</i>
+                <span class="step-change-link">({l s='CheckoutNav Change' d='Shop.Theme.Global'})</span>
+              {/if}
+            </h5>
+          </div>
+
+          {if $is_complete}
+            </a>
+          {/if}
         </div>
-    {/if}
-    {if ($step.identifier == $current_step_identifier)}{assign var='is_current_step_passed' value=true}{/if}
-{/foreach}
-      </div>
+        
+        {if $is_current}{assign var='is_current_step_passed' value=true}{/if}
+      {/foreach}
     </div>
-  {/if}
+  </div>
+{/if}
 
   
-  
-  
-  
-  
-  
-  
-  
-  
+   
   
   
   
@@ -75,4 +84,11 @@
 
 {block name='footer'}
   {include file='checkout/_partials/footer.tpl'}
+	{* === MAGAZYN TŁUMACZEŃ DLA JAVASCRIPT === *}
+	<div id="bestcheckout-translations" style="display: none;"
+		data-phone-error-short="{l s='Invalid phone number.' d='Shop.Theme.Global'}"
+		data-phone-error-long="{l s='The phone number must have 9 digits' d='Shop.Theme.Global'}"
+	>
+	</div>
+	{* === KONIEC MAGAZYNU === *}
 {/block}
