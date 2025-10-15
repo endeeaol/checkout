@@ -60,7 +60,7 @@
         {if $use_same_address && !$cart.is_virtual}
           <p>
             <a data-link-action="different-invoice-address" href="{$use_different_address_url}">
-              {l s='Billing address differs from shipping address' d='Shop.Theme.Checkout'}
+              {l s='Billing address differs from shipping address' d='Shop.Theme.Global'}
             </a>
           </p>
         {/if}
@@ -115,7 +115,7 @@
           <input type="hidden" id="not-valid-addresses" class="js-not-valid-addresses" value="{$not_valid_addresses}">
         </div>
       {/if}
-
+	  <input type="hidden" name="use_same_address" value="1">
     </form>
   </div>
 {/block}

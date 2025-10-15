@@ -30,6 +30,23 @@
                 <div class="card-body checkout-option__body py-sm-3 px-sm-4 p-2">
                     <div class="checkout-option__row row align-items-center">
                         <div class="col-auto checkout-option__col checkout-option__col--thumb">
+							
+							
+							<div class="checkout-option__thumb">
+								{* Specjalna obsługa dla modułu PayPal *}
+								{if $option.module_name == 'paypal'}
+								   <img src="https://www.paypalobjects.com/js-sdk-logos/2.3.2/paypal-default.svg" data-v-764fa0bb="" alt="" role="presentation" class="paypal-logo paypal-logo-paypal paypal-logo-color-default">
+								{else}
+								  {* Standardowe wyświetlanie dla wszystkich innych modułów płatności *}
+								  {if $option.logo}
+									<img src="{$option.logo}" class="checkout-option__img img-fluid" />
+								  {else}
+									<img src="{$urls.img_url}checkout/payment_default.svg" class="checkout-option__img img-fluid" />
+								  {/if}
+								{/if}
+							</div>
+							
+							{*
                             <div class="checkout-option__thumb">
                                 {if $option.logo}
                                     <img src="{$option.logo}" class="checkout-option__img img-fluid" />
@@ -37,6 +54,8 @@
                                     <img src="{$urls.img_url}checkout/payment_default.svg" class="checkout-option__img img-fluid" />
                                 {/if}
                             </div>
+							*}
+							
                         </div>
                         <div class="col checkout-option__col">
                             <p class="h5 mb-0">
@@ -68,7 +87,7 @@
            <div id="{$option.id}-additional-information"
                 style="display:none"
                 class="mt-2 js-additional-information definition-list additional-information{if $option.id != $selected_payment_option} ps-hidden {/if}">
-              <div class="alert alert-info">
+              <div class="alert alert-info payment-alert">
                  {$option.additionalInformation nofilter}
               </div>
            </div>
