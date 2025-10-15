@@ -6,6 +6,10 @@
 {/block}
 
 {block name='content'}
+	
+	
+	
+	
  
 {* Zmienna {$current_step_identifier} jest dostarczana przez moduł bestcheckout*}
 {* Nawigacja kroków (ukryta na pierwszym kroku) *}

@@ -2,8 +2,8 @@
 
 {block name='step_content'}
 
-	<section class="checkout-step">
-		<p class="strong">{l s='Select delivery method' d='Shop.Theme.Actions'}</p>
+	<section class="">
+		<p class="strong">{l s='Select delivery method' d='Shop.Theme.Global'}</p>
 	</section>	
 
 	<div id="hook-display-before-carrier">{$hookDisplayBeforeCarrier nofilter}</div>

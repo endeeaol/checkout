@@ -2,7 +2,10 @@
 
 {block name='step_content'}
  
-
+	<section class="">
+		<p class="strong">{l s='Select payment method' d='Shop.Theme.Global'}</p>
+	</section>	
+	
   {* used by javascript to correctly handle cart updates when we are on payment step (eg vouchers added) *}
   <div style="display:none" class="js-cart-payment-step-refresh"></div>
 
@@ -18,9 +21,7 @@
   <div class="payment-options {if $is_free}d-none{/if}">
     {foreach from=$payment_options item="module_options"}
       {foreach from=$module_options item="option"}
-        <div
-            id="{$option.id}-container"
-            class="mb-3 checkout-option-block checkout-option {if $selected_payment_option == $option.id || $is_free}selected{/if}">
+        <div id="{$option.id}-container" class="payment-option checkout-option-block checkout-option {if $selected_payment_option == $option.id || $is_free}selected{/if}">
             <input class="ps-shown-by-js custom-control-input{if $option.binary} binary{/if}" id="{$option.id}"
                 data-module-name="{$option.module_name}" name="payment-option" type="radio" required
                 {if $selected_payment_option == $option.id || $is_free} checked {/if}>
