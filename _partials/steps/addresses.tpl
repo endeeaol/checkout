@@ -33,7 +33,7 @@
           {if $cart.is_virtual}
             {l s='Address delivery and invoice.' d='Shop.Theme.Global'}
           {else}
-            {l s='The selected address will be used both as your personal address (for invoice) and as your delivery address.' d='Shop.Theme.Checkout'}
+            {l s='The selected Address delivery and invoice' d='Shop.Theme.Global'}
           {/if}
         </p>
       {else}
@@ -41,7 +41,7 @@
       {/if}
 
       {if $show_delivery_address_form}
-        <div id="delivery-address">
+        <div id="delivery-address" class="user-form user-form--sm">
 			<div class="form-group">
 				<div class="custom-control custom-checkbox">
 				  <input type="checkbox" class="custom-control-input" id="js-is-company-checkbox">

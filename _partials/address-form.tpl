@@ -41,7 +41,7 @@
         <a class="js-cancel-address cancel-address btn btn-link mr-auto" href="{url entity='order' params=['cancelAddress' => {$type}]}">{l s='Cancel' d='Shop.Theme.Actions'}</a>
       {/if}
       <button type="submit" class="continue btn btn-primary" name="confirm-addresses" value="1">
-          {l s='Continue' d='Shop.Theme.Actions'}
+          {l s='Continue - delivery method' d='Shop.Theme.Global'}
       </button>
     </div>
   {/if}
