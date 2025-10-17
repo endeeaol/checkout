@@ -6,7 +6,7 @@
     <form method="POST" data-id-address="{$id_address}" action="{url entity='order' params=['id_address' => $id_address]}" data-refresh-url="{url entity='order' params=['ajax' => 1, 'action' => 'addressForm']}" >
 
       {if $use_same_address}
-        <p class="mb-4 strong">
+        <p class="pt-2 pb-4 strong m-auto user-form--sm" style="border-top: 1px solid lightgray;">
           {if $cart.is_virtual}
             {l s='Address delivery and invoice.' d='Shop.Theme.Global'}
           {else}

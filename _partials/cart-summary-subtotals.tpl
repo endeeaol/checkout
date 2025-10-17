@@ -24,11 +24,11 @@
  *}
 {foreach from=$cart.subtotals item="subtotal"}
   {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
-    <div class="cart-summary-line cart-summary-subtotals row m-0 py-1" id="cart-subtotal-{$subtotal.type}"> 
-	    <span class="cartlabel text-right">{$subtotal.label}</span>
-		<span class="value strong">{if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}</span>
+    <div class="cart-summary-line cart-summary-subtotals row m-0 py-0 d-flex align-items-center" id="cart-subtotal-{$subtotal.type}"> 
+	    <span class="col-6 cartlabel text-right">{$subtotal.label}:</span>
+		<span class="col-6 value strong text-right">{if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}</span>
     </div>
   {/if}
 {/foreach}
-
+<hr/>
 

@@ -2,10 +2,8 @@
 
 {block name='step_content'}
 
-	<section class="">
-		<p class="strong">{l s='Select delivery method' d='Shop.Theme.Global'}</p>
-	</section>	
-
+	<p class="pt-2 pb-4 strong m-auto user-form--sm" style="border-top: 1px solid lightgray;">{l s='Select delivery method' d='Shop.Theme.Global'}</p>
+	
 	<div id="hook-display-before-carrier">{$hookDisplayBeforeCarrier nofilter}</div>
 
 	<div class="delivery-options-list">

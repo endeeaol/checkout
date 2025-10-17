@@ -11,8 +11,8 @@
 	{else}
 		
 	{if !empty($cart.subtotals.shipping.value)}
-		<div class="cart-summary-line-shipping row mb-2">
-			<div class="col-8 text-left">
+		<div class="cart-summary-line-shipping row mb-2 d-flex align-items-center mx-0">
+			<div class="col-6 text-right">
 				<span class="label cartlabel">{l s='Cart Koszt dostawy od' d='Shop.Theme.Global'}:
 					<div class="uk-inline">
 						<button class="btn btnicon" type="button"><span uk-icon="icon:info; ratio: 0.75"></span></button>
@@ -22,19 +22,18 @@
 					</div>
 				</span>
 			</div>
-			<div class="col-4 text-left">
+			<div class="col-6 text-right">
 				<span class="strong">{$cart.subtotals.shipping.value}</span>
 			</div>
 		</div>
 	{/if}
 
-	<div class="cart-summary-line cart-total corner4 mb-2">
-		{*      <span class="label">{$cart.totals.total.label}&nbsp;{if $configuration.display_taxes_label && $configuration.taxes_enabled}{$cart.labels.tax_short}{/if}</span>*}
-		<span class="cartlabel">{$cart.totals.total.label}: </span>
-		<span class="value">{$cart.totals.total.value}</span> 
+	<div class="cart-summary-line cart-total corner4 mb-2 p-0 mx-2 row d-flex align-items-center mx-0">
+		<span class="col-6 cartlabel text-right ">{$cart.totals.total.label}: </span>
+		<span class="col-6  value text-right h5 m-0 p-0 lh100">{$cart.totals.total.value}</span> 
 	</div>
 {/if}
-	
+<hr>
 	<div class="free-delivery-box">
 		{widget name='gmgetfreeshipping'}
 	</div>
